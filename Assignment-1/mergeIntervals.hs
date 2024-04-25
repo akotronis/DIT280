@@ -21,6 +21,7 @@ mergeConstructor ((start1, end1):(start2, end2):rest)
 mergeIntervals :: [(Int, Int)] -> [(Int, Int)]
 mergeIntervals intervals = mergeConstructor (sortByStart intervals)
 
+
 -- -- Tests
 -- main :: IO ()
 -- main = do
