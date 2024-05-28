@@ -42,4 +42,4 @@ main = do
   print ( pushNegation (Or (Var "a") (Var "b")) ) -- Or (Var "a") (Var "b")
   print ( pushNegation (And (Var "a") (Var "b")) ) -- And (Var "a") (Var "b")
   
-  -- pushNegation -Basic-
+  print( cnf (Not (And (Var "a") (Var "b")) ))
