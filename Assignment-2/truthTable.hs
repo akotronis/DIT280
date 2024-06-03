@@ -59,6 +59,6 @@ main = do
   -- ¬a∨b (a⇒b)
   print ( truthTable (Or (Not (Var "a")) (Var "b")) ) -- [([("a",True),("b",True)],True),([("a",True),("b",False)],False),([("a",False),("b",True)],True),([("a",False),("b",False)],True)]
   -- (¬a∧¬b)∨(a∧b) (a⇔b)
-  print ( truthTable (Or (And (Not (Var "a")) (Not (Var "b"))) (And (Var "a") (Var "b"))) )
+  print ( truthTable (Or (And (Not (Var "a")) (Not (Var "b"))) (And (Var "a") (Var "b"))) ) -- [([("a",True),("b",True)],True),([("a",True),("b",False)],False),([("a",False),("b",True)],False),([("a",False),("b",False)],True)]
   -- a∧(a∨b)
   print ( truthTable (And (Var "a") (Or (Var "a") (Var "b"))) ) -- [([("a",True),("b",True)],True),([("a",True),("b",False)],True),([("a",False),("b",True)],False),([("a",False),("b",False)],False)]
