@@ -4,6 +4,7 @@ data LogicExpr = Var String
                | Not LogicExpr
                deriving Show
 
+
 -- Push Negations
 pushNegation :: LogicExpr -> LogicExpr
 pushNegation (Var name) = Var name
@@ -14,11 +15,13 @@ pushNegation (And left right) = And (pushNegation left) (pushNegation right)
 pushNegation (Not (Or left right)) = And (pushNegation (Not left)) (pushNegation (Not right))
 pushNegation (Not (And left right)) = Or (pushNegation (Not left)) (pushNegation (Not right))
 
+
 -- Distributive law
 distribute :: LogicExpr -> LogicExpr -> LogicExpr
 distribute x (And a b) = And (distribute x a) (distribute x b)
 distribute (And a b) y = And (distribute a y) (distribute b y)
 distribute x y = Or x y
+
 
 -- Intermediate function that uses distributive law on an assumed pushed negation input
 cnfHelper :: LogicExpr -> LogicExpr
@@ -27,10 +30,10 @@ cnfHelper (Not expr) = Not (cnfHelper expr)
 cnfHelper (Or left right) = distribute (cnfHelper left) (cnfHelper right)
 cnfHelper (And left right) = And (cnfHelper left) (cnfHelper right)
 
+
 -- Main function. Uses the above functions to return the final result
 cnf :: LogicExpr -> LogicExpr
 cnf expr = cnfHelper (pushNegation expr)
-
 
 
 -- Tests
