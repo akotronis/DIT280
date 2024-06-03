@@ -55,7 +55,7 @@ main = do
   print ( distribute (And (Var "b") (Var "c")) (Var "a") ) -- And (Or (Var "b") (Var "a")) (Or (Var "c") (Var "a"))
   putStrLn ""
   
-  -- Conjuctive Normal For
+  -- Conjuctive Normal Form
   print("===== Conjuctive Normal Form =====")
   print( cnf (Var "a") ) -- Var "a"
   print( cnf (Not (Var "a")) ) -- Not (Var "a")
