@@ -26,7 +26,7 @@ applyRules :: Rules -> Facts -> [Fact]
 applyRules rules knownFacts = concatMap (applyRule knownFacts) rules
 
 
--- Helper function to iteratively apply rules until no new facts are derived
+-- Function to iteratively apply rules until no new facts are derived
 iterRules :: Rules -> Facts -> Facts
 iterRules rules knownFacts =
   let newFacts = rmDups (applyRules rules knownFacts)
